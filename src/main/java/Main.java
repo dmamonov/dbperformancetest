@@ -43,13 +43,13 @@ public class Main {
         final int[] sizes = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 20, 24, 28, 32, 48, 64, 96, 128, 192, 256};
         for(final int size:sizes) {
             for(final DatabaseType databaseType: new DatabaseType[]{DatabaseType.postgres, DatabaseType.mysql, DatabaseType.mongo}) {
-                runTestSute(DatabaseType.mongo, new int[]{size}, true);
+                runTestSuite(DatabaseType.mongo, new int[]{size}, true);
             }
         }
         System.out.println("All Done");
     }
 
-    private static void runTestSute(final DatabaseType databaseType, final int[] sizes, final boolean runAllTests) throws InterruptedException, IOException {
+    private static void runTestSuite(final DatabaseType databaseType, final int[] sizes, final boolean runAllTests) throws InterruptedException, IOException {
         for (final int maxPoolSize : sizes) { //test inserts:
             if (runAllTests || true) {
                 runTest(new TestConfig.Builder()
