@@ -40,8 +40,7 @@ public class Main {
     private static final String host = System.getProperty("host", "localhost");
 
     public static void main(final String[] args) throws InterruptedException, IOException {
-//        final int[] sizes = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 20, 24, 28, 32, 48, 64, 96, 128, 192, 256};
-        final int[] sizes = new int[]{1};
+        final int[] sizes = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 20, 24, 28, 32, 48, 64, 96, 128, 192, 256};
         for(final int size:sizes) {
             for(final DatabaseType databaseType: new DatabaseType[]{DatabaseType.postgres, DatabaseType.mysql, DatabaseType.mongo}) {
                 runTestSute(DatabaseType.mongo, new int[]{size}, true);
