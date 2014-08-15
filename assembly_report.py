@@ -3,8 +3,8 @@
 import os;
 import math;
 
-os.chdir('data/postgres/linux.env')
-# os.chdir('data/mysql/linux.env')
+# os.chdir('data/postgres/linux.env')
+os.chdir('data/mysql/linux.env')
 # os.chdir('data/mongo/linux.env')
 
 col_time = 0;
@@ -153,11 +153,11 @@ if True:
         if file_name.endswith('.csv'):
             chart_list.append(ChartData(file_name));
 
-    chart_ins_list = [c for c in chart_list if c.w_ins > 0]
-    chart_up_tiny_list = [c for c in chart_list if c.w_up_tiny > 0]
-    chart_up_wide_list = [c for c in chart_list if c.w_up_wide > 0]
-    chart_r_lite_list = [c for c in chart_list if c.r_lite > 0]
-    chart_r_heavy_list = [c for c in chart_list if c.r_heavy > 0]
+    chart_ins_list = [c for c in chart_list if c.w_ins > 0 and c.read_th==0]
+    chart_up_tiny_list = [c for c in chart_list if c.w_up_tiny > 0 and c.read_th==0]
+    chart_up_wide_list = [c for c in chart_list if c.w_up_wide > 0 and c.read_th==0]
+    chart_r_lite_list = [c for c in chart_list if c.r_lite > 0 and c.write_th==0]
+    chart_r_heavy_list = [c for c in chart_list if c.r_heavy > 0 and c.write_th==0]
     time_line = chart_list[0].time_line
 
     if len(chart_ins_list)>0:

@@ -438,9 +438,8 @@ public class Main {
 
         final StringBuilder csv = new StringBuilder("'Time','ReadOps','ReadErr','WriteOps','WriteErr'\n");
 
-
         //start tracking:
-        System.out.println("Start tracking: " + testName);
+        System.out.println("Start tracking ("+config.getDatabaseType()+"): " + testName);
         for (int time = 0; time < 60 * 5 / 5; time++) {
             if (time % 10 == 0) {
                 //cleanup environment:
@@ -632,6 +631,7 @@ public class Main {
                         public void init() {
                             try {
                                 mongo.createCollection("hikari");
+                                persistentId.reset();
                             } catch (final RuntimeException oops){
                                 if (!oops.getMessage().contains("exists")){
                                     throw oops;
@@ -799,6 +799,10 @@ public class Main {
                 }
             }
             return result;
+        }
+
+        public void reset() {
+            checkState(idFile.delete(), "Failed to delete id file: %s", idFile);
         }
     }
 }
